@@ -16,7 +16,11 @@ class Inputbox extends React.Component {
         this.setState({
             tweet:{text:event.target.value}
         })
-
+        if(event.target.value.length >= 140){
+           return this.setState({
+                tweet:{text:event.target.value.slice(0,140)}
+            })
+        }
     }
 
     handleSubmit = tweet => {
@@ -25,8 +29,8 @@ class Inputbox extends React.Component {
         this.setState( (prevState) => {
             return { tweets: [ ...prevState.tweets, tweet ] }
         })
-
-
+      
+        console.log(tweet.text.length)
         console.dir(tweet)
         console.dir(this.state);
 
