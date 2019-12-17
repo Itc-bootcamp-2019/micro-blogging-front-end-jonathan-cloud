@@ -5,9 +5,83 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.App {
+  background-color: #282c34;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tweetbox {
+  height: 100px;
+  width: 50%;
+  border:1px solid black;
+  margin: none;
+  color: white;
+}
+
+.tweet {
+  border: 1px solid black;
+height: auto;
+  width: auto;
+}
+
+.tweetbtn {
+
+}
+.buttonwrapper {
+  display: inline-block;
+}
+
+textarea{
+  background-color: transparent;
+  border: none;
+  height:100%;
+  width:100%;
+  color: white;
+}
+
+button {
+  margin-left: -50%;
+
+
+}
+ul {
+  list-style-type: none;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+p{
+  word-wrap: break-word;
+}
+
