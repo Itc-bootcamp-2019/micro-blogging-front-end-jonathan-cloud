@@ -29,6 +29,7 @@ code {
   border:1px solid black;
   margin: none;
   color: white;
+  position: absolute;
 }
 
 .tweet {
@@ -38,7 +39,9 @@ height: auto;
 }
 
 .tweetbtn {
-
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .buttonwrapper {
   display: inline-block;
