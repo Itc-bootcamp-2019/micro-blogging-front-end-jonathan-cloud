@@ -4,7 +4,8 @@ import './App.css';
 import Inputbox from "./Components/Inputbox";
 import Users from "./Components/Users";
 import Navbar from "./Components/Navbar";
-import GetTweet from './Components/GetTweets'
+import GetTweet from './Components/GetTweets';
+import TweetComponents from './Components/TweetComponent';
 
 
 
@@ -15,10 +16,7 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-       
-      <Inputbox  />
-      <GetTweet />
-
+      <TweetComponents/>
     </div>
   );
 }

@@ -1,39 +1,34 @@
 import React from "react";
-import { getTweet } from "../api/api";
+import { getTweet, postTweet } from "../api/api";
 
 class GetTweet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: []
+      tweets: this.props.tweets
     };
   }
-  componentDidMount() {
-    getTweet().then(res => {
-      const tweets = res.data.tweets;
-      this.setState({ tweets: tweets });
-      console.log(tweets[0].content);
-    });
-    console.log(this.state.tweets)
-    
-  }
+  componentDidMount() {}
 
-  handleGetRequest () {
-    
-    this.state.tweets.map(tweets => {
-     return console.log(tweets.content)
-    })
+  handleGetRequest() {
+    return (
+      <div className="tweets">
+        {this.props.tweets.map(tweet => (
+          <div className="tweet">
+            {tweet.userName}
+            <p>
+              {tweet.date}
+              <br />
+              {tweet.content}
+            </p>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   render() {
-    return (
-      <ul>
-        {this.handleGetRequest()}
-        {/* {this.state.tweets.map(tweets => 
-        <li>{tweets}</li>
-        )} */}
-      </ul>
-    );
+    return <>{this.handleGetRequest()}</>;
   }
 }
 
