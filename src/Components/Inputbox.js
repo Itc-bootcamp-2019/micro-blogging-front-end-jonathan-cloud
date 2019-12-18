@@ -26,26 +26,32 @@ class Inputbox extends React.Component {
   }
 
   goSubmit = tweet => {
-    this.state.tweet.text = "";
-
-    this.props.submit(tweet);
+    // this.state.tweet.text = "";
+    this.setState({ tweet: { content: "" } });
+    // this.props.submit(tweet);
   };
 
   render() {
     const { tweet, tweets } = this.state;
+    console.log(tweet);
+
     return (
       <>
         <textarea
           type="text"
-          value={this.state.tweet.text}
+          value={this.state.tweet.content}
           onChange={this.handleNameChange.bind(this)}
         />
 
         <button
           className="btn btn-primary tweetbtn"
           type="submit"
-          onClick={() => this.props.submit(tweet)}
+          onClick={() => {
+            this.props.submit(tweet);
+            this.goSubmit();
+          }}
         >
+          {this.props.loading}
           Tweet
         </button>
       </>

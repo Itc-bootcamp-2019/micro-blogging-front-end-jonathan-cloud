@@ -4,11 +4,11 @@ import { getTweet, postTweet } from "../api/api";
 class GetTweet extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       tweets: this.props.tweets
     };
   }
-  componentDidMount() {}
 
   handleGetRequest() {
     return (
