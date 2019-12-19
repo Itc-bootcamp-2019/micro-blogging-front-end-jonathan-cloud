@@ -5,8 +5,6 @@ class Inputbox extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
       tweet: {},
       tweets: []
@@ -33,7 +31,6 @@ class Inputbox extends React.Component {
 
   render() {
     const { tweet, tweets } = this.state;
-    console.log(tweet);
 
     return (
       <>
