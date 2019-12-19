@@ -24,14 +24,22 @@ class Users extends React.Component {
   handleSubmit = () => {
     let newUser = localStorage.setItem("user", this.state.user);
     this.setState({ user: newUser })
-    console.log(newUser)
+
   }
   render() {
-    console.log(this.state.newUser)
+    const newUser = localStorage.getItem('user')
     return (
       <div className="container-fluid">
-        <input type="text" value={this.state.user} onChange={this.onInputChange} />
-        <button onClick={this.handleSubmit.bind(this)}> test</button>
+
+        <div className="row justify-content-center">
+          <div className="profilebox form-group fluid-container">
+            <h2 className="text-left">Profile</h2>
+            <p className="text-left m-0">Username</p>
+            <input className="form-control" type="text" value={this.state.user} onChange={this.onInputChange} placeholder={newUser} />
+
+            <button className="btn btn-primary tweetbtn" onClick={this.handleSubmit.bind(this)}> test</button>
+          </div>
+        </div>
       </div>
     );
   }

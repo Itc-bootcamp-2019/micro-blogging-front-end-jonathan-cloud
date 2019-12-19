@@ -7,8 +7,8 @@ export function getTweet() {
   return axios.get(`${baseUrl}/tweet`);
 }
 
-export function postTweet (tweet) {
-  tweet={tweet:tweet};
+export function postTweet(tweet) {
+  tweet = { tweet: tweet };
 
-  return axios.post(`${baseUrl}/tweet/`,tweet)
+  return axios.post(`${baseUrl}/tweet/`, tweet)
 }

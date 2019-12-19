@@ -28,7 +28,7 @@ class TweetComponent extends React.Component {
   handleSubmit = tweet => {
     tweet.userName = localStorage.getItem('user')
     tweet.date = new Date().toISOString();
-    console.log(tweet.userName);
+    
 
     /*
     this.setState(prevState => {
