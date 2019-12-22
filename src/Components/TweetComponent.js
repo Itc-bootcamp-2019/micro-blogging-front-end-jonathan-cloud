@@ -19,7 +19,7 @@ class TweetComponent extends React.Component {
     this.NewGet();
   }
   NewGet = () => {
-    setInterval(()=> {
+    setInterval(() => {
       this.doGet()
     }, 20000)
   }
@@ -27,9 +27,9 @@ class TweetComponent extends React.Component {
 
     getTweet().then(res => {
       const tweets = res.data.tweets;
-      this.setState({ tweets: tweets, loading: false});
+      this.setState({ tweets: tweets, loading: false });
     });
- 
+
   };
 
   addATweet = (tweet) => {
@@ -40,18 +40,18 @@ class TweetComponent extends React.Component {
       { tweets: [tweet, ...this.state.tweets] }
     );
     this.handleSubmit(tweet)
-
+    if (tweet.userName ===""){
+      tweet.content.replace("something")
+    }
   }
 
   handleSubmit = tweet => {
 
-
-   
     this.setState({ loading: true });
+
     postTweet(tweet).then(() => {
       this.setState({ loading: false })
-
-    });
+    })
   };
 
   render() {

@@ -25,9 +25,11 @@ class Users extends React.Component {
     let newUser = localStorage.setItem("user", this.state.user);
     this.setState({ user: newUser })
 
+
   }
   render() {
     const newUser = localStorage.getItem('user')
+
     return (
       <div className="container-fluid">
 

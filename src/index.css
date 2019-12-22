@@ -81,7 +81,7 @@ li {
   float: left;
 }
 
-li a {
+li a{
   display: block;
   color: white;
   text-align: center;
@@ -91,6 +91,8 @@ li a {
 
 li a:hover {
   background-color: #111;
+  color: white;
+  text-decoration: none;
 }
 p{
   word-wrap: break-word;

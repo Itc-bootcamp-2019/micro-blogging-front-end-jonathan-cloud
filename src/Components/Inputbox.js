@@ -3,6 +3,7 @@ import Users from "./Users";
 import { postTweet } from "../api/api";
 import MyAppContext from "../Context/MyAppContext";
 import GetTweet from "./GetTweets";
+import TweetComponent from "./TweetComponent";
 class Inputbox extends React.Component {
 
   constructor(props) {
@@ -10,9 +11,12 @@ class Inputbox extends React.Component {
 
     this.state = {
       tweet: {},
-      tweets: []
+      tweets: [],
+      disabled: false
     };
+    this.checkUser()
   }
+  
 
   //substr (0,140)
   handleNameChange(event) {
@@ -25,7 +29,16 @@ class Inputbox extends React.Component {
       });
     }
   }
+  checkUser =() => {
+    let newUser = localStorage.getItem('user')
+    if(newUser === "") {
 
+      this.state.tweet.content= "enter a user"
+      this.state.disabled= true 
+      
+    }
+    console.log(this.state.disabled)
+  }
   goSubmit = tweet => {
     // this.state.tweet.text = "";
     this.setState({ tweet: { content: "" } });
@@ -73,6 +86,7 @@ class Inputbox extends React.Component {
                 console.log(tweetz)
                 this.goSubmit();
               }}
+              disabled={this.state.disabled}
             >
               {this.props.loading}
               Tweet
@@ -81,7 +95,7 @@ class Inputbox extends React.Component {
           )}
 
         </MyAppContext.Consumer>
-              
+
       </>
     );
   }
