@@ -1,9 +1,6 @@
 import React from "react";
-import Users from "./Users";
-import { postTweet } from "../api/api";
 import MyAppContext from "../Context/MyAppContext";
-import GetTweet from "./GetTweets";
-import TweetComponent from "./TweetComponent";
+
 class Inputbox extends React.Component {
 
   constructor(props) {
@@ -14,11 +11,11 @@ class Inputbox extends React.Component {
       tweets: [],
       disabled: false
     };
-    this.checkUser()
-  }
-  
 
-  //substr (0,140)
+  }
+
+
+
   handleNameChange(event) {
     this.setState({
       tweet: { content: event.target.value }
@@ -29,37 +26,29 @@ class Inputbox extends React.Component {
       });
     }
   }
-  checkUser =() => {
-    let newUser = localStorage.getItem('user')
-    if(newUser === "") {
 
-      this.state.tweet.content= "enter a user"
-      this.state.disabled= true 
-      
+  componentDidMount() {
+
+    this.checkUser();
+
+  }
+
+  checkUser = () => {
+    let newUser = localStorage.getItem('user')
+    if (!newUser || newUser === "undefined") {
+      this.setState({ tweet: { content: 'Make sure to set a profile' }, disabled: true })
+
     }
-    console.log(this.state.disabled)
   }
   goSubmit = tweet => {
-    // this.state.tweet.text = "";
+
     this.setState({ tweet: { content: "" } });
-    // this.props.submit(tweet);
+
   };
 
   render() {
-    const { tweet, tweets } = this.state;
-    const submit = (tweet) => {
-      tweet.userName = localStorage.getItem('user')
-      tweet.date = new Date().toISOString();
+    const { tweet } = this.state;
 
-      this.setState(
-        { tweets: [tweet, ...this.state.tweets] }
-      );
-    }
-    /**
-     * function submit(){
-     * //in here post the tweet
-     * }
-     */
     return (
 
 
@@ -72,18 +61,16 @@ class Inputbox extends React.Component {
           onChange={this.handleNameChange.bind(this)}
         />
         <MyAppContext.Consumer>
-          {({ tweetz, addTweet }) => (
+          {({ tweets, addTweet }) => (
             <button
               className="btn btn-primary tweetbtn"
               type="submit"
               onClick={() => {
-                //this.props.submit(tweet);
-                // addTweet(tweet)
+
                 addTweet(tweet)
-                //instead of addtweet, submit(tweet)
-                //and then tweetz.push(tweet);
-                tweetz.push(tweet)
-                console.log(tweetz)
+
+                tweets.push(tweet)
+
                 this.goSubmit();
               }}
               disabled={this.state.disabled}

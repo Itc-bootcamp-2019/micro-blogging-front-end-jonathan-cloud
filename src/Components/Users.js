@@ -11,8 +11,12 @@ class Users extends React.Component {
     super(props);
     console.log(this.props);
     this.state = {
-      user: "",
+      user: "Jon",
     };
+  }
+
+  componentDidMount() {
+    this.setState({ user: "" })
   }
 
   onInputChange = (e) => {
@@ -30,6 +34,7 @@ class Users extends React.Component {
   render() {
     const newUser = localStorage.getItem('user')
 
+
     return (
       <div className="container-fluid">
 
@@ -39,7 +44,7 @@ class Users extends React.Component {
             <p className="text-left m-0">Username</p>
             <input className="form-control" type="text" value={this.state.user} onChange={this.onInputChange} placeholder={newUser} />
 
-            <button className="btn btn-primary tweetbtn" onClick={this.handleSubmit.bind(this)}> test</button>
+            <button className="btn btn-primary tweetbtn" onClick={this.handleSubmit.bind(this)}>Save</button>
           </div>
         </div>
       </div>

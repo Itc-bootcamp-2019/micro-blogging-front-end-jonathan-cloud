@@ -1,8 +1,9 @@
 import React from 'react';
 
 const MyAppContext = React.createContext({
-  tweetz: ['test'],
-  addTweet: (tweetz) => {console.log("tweetz")}
+  tweets: [],
+  addTweet: (tweets) => { },
+
 })
 
 export default MyAppContext

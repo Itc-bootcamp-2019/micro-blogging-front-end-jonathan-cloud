@@ -1,5 +1,4 @@
 import React from "react";
-import { getTweet, postTweet } from "../api/api";
 import MyAppContext from "../Context/MyAppContext";
 
 class GetTweet extends React.Component {
@@ -15,10 +14,10 @@ class GetTweet extends React.Component {
 
     return (
       <MyAppContext.Consumer>
-        {({ tweetz }) => (
+        {({ tweets }) => (
           <div className="tweets">
 
-            {tweetz.map(tweet => (
+            {tweets.map(tweet => (
 
               <div className="tweet">
                 {tweet.userName}
@@ -29,14 +28,12 @@ class GetTweet extends React.Component {
                 </p>
               </div>
             ))}
-            {console.log(tweetz)}
           </div>)}
       </MyAppContext.Consumer>
     );
   }
 
   render() {
-    console.log(this.props.tweets)
     return <>{this.handleGetRequest()}</>;
   }
 }

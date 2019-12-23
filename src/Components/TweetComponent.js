@@ -4,7 +4,6 @@ import "../App.css";
 import Inputbox from "./Inputbox";
 import GetTweet from "./GetTweets";
 import { getTweet, postTweet } from "../api/api.js";
-import Users from "./Users";
 import MyAppContext from "../Context/MyAppContext";
 class TweetComponent extends React.Component {
   constructor(props) {
@@ -15,20 +14,30 @@ class TweetComponent extends React.Component {
       loading: null,
     };
 
-    this.doGet();
     this.NewGet();
   }
   NewGet = () => {
     setInterval(() => {
       this.doGet()
-    }, 20000)
+      console.log("refreshing");
+    }, 10000)
   }
+
+  componentDidMount() {
+
+    this.doGet();
+
+  }
+
   doGet = () => {
 
-    getTweet().then(res => {
+    getTweet().then((res) => {
       const tweets = res.data.tweets;
       this.setState({ tweets: tweets, loading: false });
-    });
+    },
+      (err) => {
+        window.alert(err);
+      });
 
   };
 
@@ -40,18 +49,22 @@ class TweetComponent extends React.Component {
       { tweets: [tweet, ...this.state.tweets] }
     );
     this.handleSubmit(tweet)
-    if (tweet.userName ===""){
-      tweet.content.replace("something")
-    }
+
   }
 
   handleSubmit = tweet => {
 
     this.setState({ loading: true });
 
-    postTweet(tweet).then(() => {
-      this.setState({ loading: false })
-    })
+    postTweet(tweet).then((res) => {
+    },
+      (err) => {
+
+        window.alert(err);
+
+      }).then(() => {
+        this.setState({ loading: false })
+      });
   };
 
   render() {
@@ -59,7 +72,7 @@ class TweetComponent extends React.Component {
     return (
       <div className="row justify-content-center">
         <div className="tweetbox fluid-container">
-          <MyAppContext.Provider value={{ tweetz: this.state.tweets, addTweet: this.addATweet }}>
+          <MyAppContext.Provider value={{ tweets: this.state.tweets, addTweet: this.addATweet }}>
             <Inputbox
               submit={this.handleSubmit}
               loading={

@@ -15,19 +15,19 @@ import Users from "./Components/Users";
 function App() {
   return (
     <Router>
-    <div className="App">
-      
+      <div className="App">
+
         <Navbar />
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <TweetComponents />
           </Route>
           <Route path="/profile">
             <Users />
           </Route>
         </Switch>
-      
-    </div>
+
+      </div>
     </Router>
   );
 }

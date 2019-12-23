@@ -1,22 +1,19 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams,
-    Link
-  } from "react-router-dom";
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  Link
+} from "react-router-dom";
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
       <ul>
         <li>
-          <Link className="active" to="/home">
+          <Link className="active" to="/">
             Home
           </Link>
         </li>
