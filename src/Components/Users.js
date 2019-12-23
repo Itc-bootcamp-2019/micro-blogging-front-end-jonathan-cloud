@@ -6,6 +6,8 @@ import {
   useParams
 } from "react-router-dom";
 
+
+
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -41,10 +43,11 @@ class Users extends React.Component {
         <div className="row justify-content-center">
           <div className="profilebox form-group fluid-container">
             <h2 className="text-left">Profile</h2>
-            <p className="text-left m-0">Username</p>
-            <input className="form-control" type="text" value={this.state.user} onChange={this.onInputChange} placeholder={newUser} />
-
-            <button className="btn btn-primary tweetbtn" onClick={this.handleSubmit.bind(this)}>Save</button>
+            <p className="text-left m-0">Username</p> 
+            <input className="form-control bg-dark" type="text" value={this.state.user} onChange={this.onInputChange} placeholder={newUser} /> 
+            <div className="row m-auto">
+            <button className="btn ml-auto user-btn btn-primary" onClick={this.handleSubmit.bind(this)}>Save</button> 
+            </div>
           </div>
         </div>
       </div>

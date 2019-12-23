@@ -19,11 +19,18 @@ class GetTweet extends React.Component {
 
             {tweets.map(tweet => (
 
-              <div className="tweet">
-                {tweet.userName}
-                <p>
+              <div className="tweet rounded">
+                <div className="space row m-auto">
+                <span>
+
+                  {tweet.userName}
+                </span>
+                <span>
                   {tweet.date}
-                  <br />
+
+                </span>
+                </div>
+                <p> <br/>
                   {tweet.content}
                 </p>
               </div>

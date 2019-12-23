@@ -71,7 +71,7 @@ class TweetComponent extends React.Component {
     const { loading } = this.state;
     return (
       <div className="row justify-content-center">
-        <div className="tweetbox fluid-container">
+        <div className="tweetbox fluid-container rounded">
           <MyAppContext.Provider value={{ tweets: this.state.tweets, addTweet: this.addATweet }}>
             <Inputbox
               submit={this.handleSubmit}
