@@ -5,10 +5,11 @@ import Inputbox from "./Inputbox";
 import GetTweet from "./GetTweets";
 import { getTweet, postTweet } from "../api/api.js";
 import MyAppContext from "../Context/MyAppContext";
+// import {db} from '../api/Firestore'
+import { db } from "../api/Firestore";
 class TweetComponent extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       tweets: [],
       loading: null,
@@ -19,14 +20,13 @@ class TweetComponent extends React.Component {
   NewGet = () => {
     setInterval(() => {
       this.doGet()
-      console.log("refreshing");
     }, 10000)
   }
 
+
   componentDidMount() {
-
     this.doGet();
-
+    // this.postUser();
   }
 
   doGet = () => {

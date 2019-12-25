@@ -15,7 +15,7 @@ code {
 
 
 .App {
-  background-color: #282c34;
+  background-color: #15202B;;
   height: 250%;
   width: 100%;
   position: absolute;
@@ -24,7 +24,7 @@ code {
 }
 
 .tweetbox {
-  height: 100px;
+  height: 150px;
   width: 50%;
   border:1px solid white;
   margin: none;
@@ -53,6 +53,7 @@ height: auto;
   position: absolute;
   bottom: 0;
   right: 0;
+  margin: 6px;
 }
 .buttonwrapper {
   display: inline-block;
@@ -77,8 +78,8 @@ span {
 }
 ul {
   list-style-type: none;
-  margin-left: 12.5%;
-  margin-right: 12.5%;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 0;
   overflow: hidden;
   background-color: #333;

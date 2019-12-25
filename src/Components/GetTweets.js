@@ -30,7 +30,7 @@ class GetTweet extends React.Component {
 
                 </span>
                 </div>
-                <p> <br/>
+                <p> 
                   {tweet.content}
                 </p>
               </div>

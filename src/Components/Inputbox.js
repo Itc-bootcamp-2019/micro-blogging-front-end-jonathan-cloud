@@ -36,7 +36,7 @@ class Inputbox extends React.Component {
   checkUser = () => {
     let newUser = localStorage.getItem('user')
     if (!newUser || newUser === "undefined") {
-      this.setState({ tweet: { content: 'Make sure to set a profile' }, disabled: true })
+      this.setState({ tweet: { content: '--If the button is disabled make sure to set a profile--' }, disabled: true })
 
     }
   }
@@ -56,8 +56,10 @@ class Inputbox extends React.Component {
 
 
         <textarea
+          style={{"resize":"none"}}
           type="text"
           value={this.state.tweet.content}
+          placeholder="What do you have in mind..."
           onChange={this.handleNameChange.bind(this)}
         />
         <MyAppContext.Consumer>

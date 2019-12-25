@@ -11,6 +11,9 @@ import {
   Link
 } from "react-router-dom";
 import Users from "./Components/Users";
+import 'firebase/database'
+import FirestoreInfo from "./Components/FirestoreInfo";
+import Firestorelogin from './Components/Firestorelogin';
 
 
 
@@ -27,6 +30,12 @@ function App() {
           </Route>
           <Route path="/profile">
             <Users />
+          </Route>
+          <Route path="/Firestore">
+            <FirestoreInfo />
+          </Route>
+          <Route>
+            <Firestorelogin />
           </Route>
         </Switch>
 
