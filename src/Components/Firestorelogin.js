@@ -9,25 +9,55 @@ class Firestorelogin extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: ""
+      username: "",
+      email: "",
+      password: "",
+      passwordTwo: ""
     }
 
   }
 
-  handleSubmit(event) {
-    this.setState({ user: event.target.value })
+  handleUser(event) {
+    this.setState({ username: event.target.value })
+
   }
+
+  handlePassword(event) {
+    this.setState({password:event.target.value})
+  }
+
+  onSubmit = () => {
+    this.doCreateUserWithEmailAndPassword(this.state.username, this.state.password)
+    
+  }
+
   doCreateUserWithEmailAndPassword = (email, password) => {
     auth.createUserWithEmailAndPassword(email, password);
   }
 
+  doSignInWithEmailAndPassword = (email, password) => {
+    auth.signInWithEmailAndPassword(email, password);
+  }
+
+  doSignOut = () => {
+    auth.signOut();
+  }
+
+
   render() {
-    this.doCreateUserWithEmailAndPassword("jefff@gmail.com", "1233445677")
+
     return (
-      <><div className="text-white">
-        Login:
-        <input type="text" onChange={this.handleSubmit.bind(this)}></input>
-      </div>
+      <>
+        <div className="justify-content-center container-fluid form-group row">
+          <div className="">
+            create user:
+        <input type="text" className="form-control" value={this.state.username} onChange={this.handleUser.bind(this)}></input>
+            <input type="text" value={this.state.password}className="form-control" onChange={this.handlePassword.bind(this)}></input>
+            {/* <input type="text" className="form-control" onChange={this.handleSubmit.bind(this)}></input>
+          <input type="text" className="form-control" onChange={this.handleSubmit.bind(this)}></input> */}
+            <button className="btn-primary" onClick={()=>{this.onSubmit()}}>test</button>
+          </div>
+        </div>
       </>
     )
   }

@@ -41,7 +41,7 @@ class Users extends React.Component {
       <div className="container-fluid">
 
         <div className="row justify-content-center">
-          <div className="profilebox form-group fluid-container">
+          <div className="profilebox form-group">
             <h2 className="text-left">Profile</h2>
             <p className="text-left m-0">Username</p> 
             <input className="form-control text-white bg-dark" type="text" value={this.state.user} onChange={this.onInputChange} placeholder={newUser} /> 
