@@ -16,7 +16,7 @@ class Navbar extends React.Component {
           <Link to="/login">Firestore Login</Link>
         </li>
         <li>
-          <Link to="/Firestore" > Firestore</Link>
+          <Link to="/Firestore" >Firestore Home</Link>
         </li>
         <li>
           <Link className="active" to="/">

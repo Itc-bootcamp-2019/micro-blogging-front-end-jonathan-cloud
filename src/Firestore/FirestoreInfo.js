@@ -1,22 +1,23 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import Inputbox from "./Inputbox";
-import GetTweet from "./GetTweets";
-import { getTweet, postTweet } from "../api/api.js";
-import MyAppContext from "../Context/MyAppContext";
+import firebase, { auth } from 'firebase'
 import { db } from "../api/Firestore";
 import Firestorepost from "./Firestorepost";
-
+import Firestoreauth from './Firestoreauth'
+import {Redirect} from 'react-router-dom';
 class FirestoreInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       tweets: [],
       tweetz: [],
-      loading: true
+      loading: true,
+      auth: firebase.auth().currentUser
+      
     }
     this.refresh()
+    //console.log(this.state.auth)
   }
 
   refresh = () => {
@@ -27,20 +28,28 @@ class FirestoreInfo extends React.Component {
 
   componentDidMount() {
     this.getUser()
+    //this.setState({auth: (firebase.auth().currentUser.displayName)});
+    // let thing=firebase.auth();
+    // let thing2=firebase.auth().onAuthStateChanged(user=>{
+    //   if (user)
+    //     this.setState({auth:true});
+    //   else
+    //     this.setState({auth:false});
+
+    //   console.log(this.state.auth);
+    // })
+    // console.log(thing);
+    // console.log(thing2)
+    // console.log(firebase.auth().currentUser);
+    // console.log(this.state.auth);
   }
 
-  docRef() {
-    const newThis = this
-    db.collection("tweets").get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        console.log("wegetagain")
-        let items = doc.data()
-        newThis.state.tweetz.push(items)
+  componentWillUnmount(){
 
-      });
-    });
+    // this.setState({auth:false});
+
   }
-
+  
 
   getUser = () => {
     db.collection("tweets").orderBy("date","desc").get()
@@ -60,7 +69,8 @@ class FirestoreInfo extends React.Component {
 
   }
   render() {
-
+    console.log(this.state.auth)
+    if(!this.state.auth) return <Redirect to='/login' />
     return (
       <>
 

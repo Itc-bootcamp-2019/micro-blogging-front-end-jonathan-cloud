@@ -8,12 +8,13 @@ import {
   Switch,
   Route,
   useParams,
-  Link
+  Link,
+  
 } from "react-router-dom";
 import Users from "./Components/Users";
 import 'firebase/database'
-import FirestoreInfo from "./Components/FirestoreInfo";
-import Firestorelogin from './Components/Firestorelogin';
+import FirestoreInfo from "./Firestore/FirestoreInfo";
+import Firestorelogin from './Firestore/Firestorelogin';
 
 
 
@@ -34,7 +35,7 @@ function App() {
           <Route path="/Firestore">
             <FirestoreInfo />
           </Route>
-          <Route>
+          <Route path="/login">
             <Firestorelogin />
           </Route>
         </Switch>

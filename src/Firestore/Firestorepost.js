@@ -1,5 +1,6 @@
 import React from 'react';
 import { db } from "../api/Firestore";
+import { auth } from 'firebase';
 
 class Firestorepost extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Firestorepost extends React.Component {
 
     db.collection("tweets").add({
       content: this.state.content,
-      userName: "Jon",
+      userName: auth().currentUser.displayName,
       date: new Date().toISOString()
     })
       .then(function (docRef) {
@@ -26,10 +27,11 @@ class Firestorepost extends React.Component {
   }
   handleSubmit(event) {
     this.setState({ content: event.target.value })
-    
+
   }
+  
   render() {
-    
+    console.log(auth().currentUser.uid)
     return (
       <>
         <textarea style={{ resize: "none" }} type="text" value={this.state.content} onChange={this.handleSubmit.bind(this)} />
