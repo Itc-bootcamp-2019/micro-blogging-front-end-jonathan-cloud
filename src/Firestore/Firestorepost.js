@@ -31,7 +31,7 @@ class Firestorepost extends React.Component {
   }
   
   render() {
-    console.log(auth().currentUser.uid)
+
     return (
       <>
         <textarea style={{ resize: "none" }} type="text" value={this.state.content} onChange={this.handleSubmit.bind(this)} />
